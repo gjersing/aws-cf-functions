@@ -1,19 +1,21 @@
 function handler(event) {
   var request = event.request;
   var uri = request.uri;
-  
-  if (uri.includes('stores.staging.customink.com/storefront')) {
-    var redirectUri = uri.replace('stores.staging.customink.com/storefront', 'www-master.staging.customink.com/c');
+  var newUrl = 'https://www-master.staging.customink.com/c';
 
-    var redirectResponse = {
+  if (uri.startsWith('/storefront')) {
+    var redirectUri = uri.replace('/storefront', '');
+    newUrl += redirectUri;
+  } else {
+      newUrl += uri;
+  }
+  
+  var redirectResponse = {
       statusCode: 301,
       statusDescription: "Moved Permanently",
       headers:
-        { "location": { "value": redirectUri } }
-    }
-
-    return redirectResponse;
+        { "location": { "value": newUrl } }
   }
-
-  return request;
+  
+  return redirectResponse;
 }
