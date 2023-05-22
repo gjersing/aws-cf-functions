@@ -3,9 +3,9 @@ function handler(event) {
   var uri = request.uri;
   
   if (uri.includes('stores.customink.com/storefront')) {
-    const redirectUri = uri.replace('stores.customink.com/storefront', 'customink.com/c');
+    var redirectUri = uri.replace('stores.customink.com/storefront', 'customink.com/c');
 
-    const redirectResponse = {
+    var redirectResponse = {
       statusCode: 301,
       statusDescription: "Moved Permanently",
       headers:

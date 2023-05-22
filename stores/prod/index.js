@@ -3,13 +3,13 @@ function handler(event) {
   var uri = request.uri;
   
   if (uri.includes('stores.customink.com/')) {
-    const redirectUri = uri.replace('stores.customink.com/', 'customink.com/');
+    var redirectUri = uri.replace('stores.customink.com/', 'customink.com/');
 
     if (!uri.includes('customink.com/s/')) {
-      redirectUri = uri.replace('customink.com/', 'customink.com/s/');
+      redirectUri = redirectUri.replace('customink.com/', 'customink.com/s/');
     }
 
-    const redirectResponse = {
+    var redirectResponse = {
       statusCode: 301,
       statusDescription: "Moved Permanently",
       headers:
